@@ -1,4 +1,4 @@
-package org.batlehack.gro;
+package org.battlehack.gro;
 
 
 import org.eclipse.jetty.server.Handler;
