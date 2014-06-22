@@ -89,8 +89,8 @@ public class newitemActivity extends Activity{
         params.add(emailJson);
         BasicNameValuePair tagsJson = new BasicNameValuePair("tags", tags.getText().toString());
         params.add(tagsJson);
-        BasicNameValuePair quantityJson = new BasicNameValuePair("quantity", quantity.getText().toString());
-        params.add(quantityJson);
+//        BasicNameValuePair quantityJson = new BasicNameValuePair("quantity", quantity.getText().toString());
+//        params.add(quantityJson);
         BasicNameValuePair photoJson = new BasicNameValuePair("image", imgstr);
         params.add(photoJson);
         

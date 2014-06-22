@@ -18,14 +18,16 @@ public class MatView extends SurfaceView {
 	private SurfaceHolder surfaceHolder;
 	private Bitmap bmp;
 	private Bitmap bmpsessel;
-	private Bitmap bmpbutbike_c;
+	private Bitmap bmpsessel2;
 	private Bitmap bmpbgstart;
 	private Bitmap bmpfgstart;
-	private Bitmap bmp1;
 	private Bitmap bmp2;
 	private Bitmap bmps;
 	private Bitmap bmp3;
 	private Bitmap bmp4;
+	private Bitmap yellow;
+	private Bitmap yellow_draw;
+	private Bitmap fb;
 	private float bikey = 0;
 	private float bikex = 0;
 	private float sessy = 0;
@@ -67,25 +69,31 @@ public class MatView extends SurfaceView {
 		int height = metrics.heightPixels;
 		bmp = BitmapFactory.decodeResource(getResources(), R.drawable.bicycle_button_magenta);
 		bmpsessel = BitmapFactory.decodeResource(getResources(), R.drawable.chair_button);
+		bmpsessel2 = BitmapFactory.decodeResource(getResources(), R.drawable.chair_button_login);
 		bmpbgstart = BitmapFactory.decodeResource(getResources(), R.drawable.start_back);
 		bmpfgstart = BitmapFactory.decodeResource(getResources(), R.drawable.start_front);
+		yellow = BitmapFactory.decodeResource(getResources(), R.drawable.create_new_profile_button_yellow);
 		bmp3 = Bitmap.createScaledBitmap(bmpbgstart, width, bmpbgstart.getHeight(), true);
 		bmp4 = Bitmap.createScaledBitmap(bmpfgstart, width, bmpfgstart.getHeight(), true);
-		
+		yellow_draw = Bitmap.createScaledBitmap(yellow, yellow.getWidth(), yellow.getHeight(), true);
 		}
 	@Override
 	protected void onDraw(Canvas canvas){
 		canvas.drawColor(Color.WHITE);
 		rote-=0.3;
-		if(moveup){
+		if(moveup && stop){
 			if((sessy > (float) ((getHeight()/2)-(bmp.getHeight()*0.6))) && stop){
-				sessy_add-=10;
-				sessx_add+=5;
-				bikex_add+=5;
+				sessy_add-=20;
+				sessx_add+=10;
+				bikex_add+=10;
 			}else{
 				stop = false;
 			}
-			rote2+=2;
+			rote2+=3;
+		}else if(!stop){
+			bmpsessel = bmpsessel2;
+			rote2+=3;
+			//canvas.drawBitmap(yellow_draw, (getWidth()/2)-(yellow_draw.getWidth()/2), (getHeight())-(yellow_draw.getHeight()), null);
 		}
 		transform.setRotate(rote);
 		transformsess.setRotate(rote2);
@@ -100,7 +108,9 @@ public class MatView extends SurfaceView {
         canvas.drawBitmap(bmps, sessx, sessy, null);
         canvas.drawBitmap(bmp4, (getWidth()/2)-(bmp4.getWidth()/2), getHeight()-bmp4.getHeight(), null);
 
-
+        
+        
+        //canvas.drawBitmap(yellow_draw, (getWidth()/2)-(yellow_draw.getWidth()/2), (getHeight())-(yellow_draw.getHeight()), null);
 
 	}
 	@Override
@@ -121,7 +131,7 @@ public class MatView extends SurfaceView {
 	            case MotionEvent.ACTION_UP:
 	            	if(contact(x,y,15,15,bikex,bikey,bmp2.getWidth(),bmp2.getHeight())){
 	            		final Context context = MatView.this.getContext();
-	                    Intent intent = new Intent(context , loginActivity.class);
+	                    Intent intent = new Intent(context , homeActivity.class);
 	                    context.startActivity(intent);
                     }
 	            	if(contact(x,y,15,15,sessx,sessy,bmps.getWidth(),bmps.getHeight())){
@@ -146,6 +156,15 @@ public class MatView extends SurfaceView {
             try {
                 matThread.join();
                 retry=false;
+                bmp.recycle();
+            	bmpsessel.recycle();
+            	bmpsessel2.recycle();
+            	bmpbgstart.recycle();
+            	bmpfgstart.recycle();
+            	bmp2.recycle();
+            	bmps.recycle();
+            	bmp3.recycle();
+            	bmp4.recycle();
             }catch(InterruptedException e){
                 Log.d("MessagePW", "destroying went wrong: " + e.toString());
             }

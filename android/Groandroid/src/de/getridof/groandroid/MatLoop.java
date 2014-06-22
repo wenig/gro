@@ -8,7 +8,7 @@ public class MatLoop extends Thread {
 
 	private MatView view;
 	private boolean running = false;
-    static final long FPS = 40;
+    static final long FPS = 500;
 
 	public MatLoop(MatView view) {
         this.view = view;
@@ -25,7 +25,7 @@ public class MatLoop extends Thread {
 	@SuppressLint("WrongCall")
 	@Override
     public void run() {
-        long TPS = 1000 / FPS;
+        long TPS = 5000 / FPS;
         long startTime, sleepTime;
 		Log.d("MessagePW", "run()yeah");
         while (running) {

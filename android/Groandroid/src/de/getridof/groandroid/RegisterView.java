@@ -185,6 +185,22 @@ public class RegisterView extends SurfaceView {
             try {
                 matThread.join();
                 retry=false;
+                bmp.recycle();
+            	bmpsec.recycle();
+            	bmpsec_draw.recycle();
+            	bmpsessel.recycle();
+            	bmpavatar.recycle();
+            	bmpbgstart.recycle();
+            	bmpfgstart.recycle();
+            	bmp1.recycle();
+            	bmp2.recycle();
+            	bmps.recycle();
+            	bmp3.recycle();
+            	bmp4.recycle();
+            	right.recycle();
+            	left.recycle();
+            	right_draw.recycle();
+            	left_draw.recycle();
             }catch(InterruptedException e){
                 Log.d("MessagePW", "destroying went wrong: " + e.toString());
             }
