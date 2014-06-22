@@ -28,6 +28,9 @@ public class MatView extends SurfaceView {
 	private Bitmap yellow;
 	private Bitmap yellow_draw;
 	private Bitmap fb;
+	private Bitmap fb_draw;
+	private Bitmap gp;
+	private Bitmap gp_draw;
 	private float bikey = 0;
 	private float bikex = 0;
 	private float sessy = 0;
@@ -44,6 +47,7 @@ public class MatView extends SurfaceView {
     private boolean moveup = false;
     private boolean stop = true;
     private boolean rotebool = true;
+    private boolean yellowbool = false;
     private float rote = 0;
     private float rote2 = 225;
 	private MatLoop matThread = new MatLoop(this);
@@ -73,6 +77,7 @@ public class MatView extends SurfaceView {
 		bmpbgstart = BitmapFactory.decodeResource(getResources(), R.drawable.start_back);
 		bmpfgstart = BitmapFactory.decodeResource(getResources(), R.drawable.start_front);
 		fb = BitmapFactory.decodeResource(getResources(), R.drawable.facebook_button);
+		gp = BitmapFactory.decodeResource(getResources(), R.drawable.google_plus_button);
 		yellow = BitmapFactory.decodeResource(getResources(), R.drawable.create_new_profile_button_yellow);
 		bmp3 = Bitmap.createScaledBitmap(bmpbgstart, width, bmpbgstart.getHeight(), true);
 		bmp4 = Bitmap.createScaledBitmap(bmpfgstart, width, bmpfgstart.getHeight(), true);
@@ -84,13 +89,14 @@ public class MatView extends SurfaceView {
 		rote-=0.3;
 		if(moveup && stop){
 			if((sessy > (float) ((getHeight()/2)-(bmp.getHeight()*0.6))) && stop){
-				sessy_add-=20;
-				sessx_add+=10;
-				bikex_add+=10;
+				sessy_add-=40;
+				sessx_add+=20;
+				bikex_add+=20;
 			}else{
 				stop = false;
+				yellowbool = true;
 			}
-			rote2+=3;
+			rote2+=6;
 		}else if(!stop){
 			bmpsessel = bmpsessel2;
 			rote2+=3;
@@ -99,6 +105,8 @@ public class MatView extends SurfaceView {
 		transform.setRotate(rote);
 		transformsess.setRotate(rote2);
 		bmp2 = Bitmap.createBitmap(bmp, 0, 0, bmp.getWidth(), bmp.getHeight(), transform, true);
+		fb_draw = Bitmap.createBitmap(fb, 0, 0, fb.getWidth(), fb.getHeight(), null, true);
+		gp_draw = Bitmap.createBitmap(gp, 0, 0, gp.getWidth(), gp.getHeight(), null, true);
 		bmps = Bitmap.createBitmap(bmpsessel, 0, 0, bmpsessel.getWidth(), bmpsessel.getHeight(), transformsess, true);
 		bikey = (float) ((getHeight()/2)-(bmp2.getHeight()*0.6))+bikey_add;
 		bikex = (getWidth()/2)-(bmp2.getWidth()/2)+bikex_add;
@@ -108,11 +116,12 @@ public class MatView extends SurfaceView {
         canvas.drawBitmap(bmp2, bikex, bikey, null);
         canvas.drawBitmap(bmps, sessx, sessy, null);
         canvas.drawBitmap(bmp4, (getWidth()/2)-(bmp4.getWidth()/2), getHeight()-bmp4.getHeight(), null);
-
         
-        
-        //canvas.drawBitmap(yellow_draw, (getWidth()/2)-(yellow_draw.getWidth()/2), (getHeight())-(yellow_draw.getHeight()), null);
-
+        if(yellowbool){
+        	canvas.drawBitmap(fb, 50, 30, null);
+        	canvas.drawBitmap(gp_draw, getWidth()-gp_draw.getWidth()-50, 30, null);
+        	canvas.drawBitmap(yellow_draw, (getWidth()/2)-(yellow_draw.getWidth()/2), (getHeight())-(yellow_draw.getHeight())-50, null);
+        }
 	}
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
@@ -135,12 +144,13 @@ public class MatView extends SurfaceView {
 	                    Intent intent = new Intent(context , homeActivity.class);
 	                    context.startActivity(intent);
                     }
-	            	if(contact(x,y,15,15,sessx,sessy,bmps.getWidth(),bmps.getHeight())){
-	            		if(moveup){
+	            	if(contact(x,y,15,15,(getWidth()/2)-(yellow_draw.getWidth()/2),(getHeight())-(yellow_draw.getHeight())-50,yellow_draw.getWidth(),yellow_draw.getHeight()))
+	            		{
 	            			final Context context = MatView.this.getContext();
 		                    Intent intent = new Intent(context , registerActivity.class);
 		                    context.startActivity(intent);
 	            		}
+	            	if(contact(x,y,15,15,sessx,sessy,bmps.getWidth(),bmps.getHeight())){
 		                moveup = true;
 	            	}
 	                mIsDown = false;

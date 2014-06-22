@@ -72,7 +72,7 @@ public class homeView extends SurfaceView {
 	protected void onDraw(Canvas canvas){
 		if(leftbool){
 			if(additional < getWidth()){
-				additional+=20;
+				additional+=50;
 			}else{
 				leftbool = false;
 			}
@@ -80,7 +80,7 @@ public class homeView extends SurfaceView {
 		
 		if(leftboolon){
 			if(additional < 0){
-				additional+=20;
+				additional+=50;
 			}else{
 				leftboolon = false;
 			}
@@ -88,7 +88,7 @@ public class homeView extends SurfaceView {
 		
 		if(rightboolon){
 			if(additional > -getWidth()){
-				additional-=20;
+				additional-=50;
 			}else{
 				rightboolon = false;
 			}
@@ -96,7 +96,7 @@ public class homeView extends SurfaceView {
 		
 		if(rightbool){
 			if(additional > 0){
-				additional-=20;
+				additional-=50;
 			}else{
 				rightbool = false;
 			}
