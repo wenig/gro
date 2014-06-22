@@ -107,6 +107,8 @@ public class newitemActivity extends Activity{
 
         // check log cat fro response
         Log.d("Create Response", json.toString());
+        Intent intent = new Intent(this , homeActivity.class);
+        this.startActivity(intent);
 	}
 	
 }

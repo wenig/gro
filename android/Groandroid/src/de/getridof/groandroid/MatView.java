@@ -72,6 +72,7 @@ public class MatView extends SurfaceView {
 		bmpsessel2 = BitmapFactory.decodeResource(getResources(), R.drawable.chair_button_login);
 		bmpbgstart = BitmapFactory.decodeResource(getResources(), R.drawable.start_back);
 		bmpfgstart = BitmapFactory.decodeResource(getResources(), R.drawable.start_front);
+		fb = BitmapFactory.decodeResource(getResources(), R.drawable.facebook_button);
 		yellow = BitmapFactory.decodeResource(getResources(), R.drawable.create_new_profile_button_yellow);
 		bmp3 = Bitmap.createScaledBitmap(bmpbgstart, width, bmpbgstart.getHeight(), true);
 		bmp4 = Bitmap.createScaledBitmap(bmpfgstart, width, bmpfgstart.getHeight(), true);
