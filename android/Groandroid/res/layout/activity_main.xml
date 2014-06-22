@@ -8,4 +8,143 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:ems="10"
+        android:inputType="text" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/lastname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/name"
+        android:layout_below="@+id/name"
+        android:ems="10"
+        android:inputType="text" />
+    
+    <EditText
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/lastname"
+        android:layout_below="@+id/lastname"
+        android:ems="10"
+        android:inputType="text" />
+    
+    <EditText
+        android:id="@+id/zip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/address"
+        android:layout_below="@+id/address"
+        android:ems="5"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/zip"
+        android:layout_alignBottom="@+id/zip"
+        android:layout_alignRight="@+id/address"
+        android:ems="5"
+        android:inputType="text" />
+    
+    <EditText
+        android:id="@+id/birthday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/zip"
+        android:layout_below="@+id/zip"
+        android:ems="10"
+        android:inputType="date" />
+    
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/birthday"
+        android:layout_below="@+id/birthday"
+        android:ems="10"
+        android:inputType="textWebEmailAddress" />
+    
+    <EditText
+        android:id="@+id/phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/email"
+        android:layout_below="@+id/email"
+        android:ems="10"
+        android:inputType="phone" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/phone"
+        android:layout_below="@+id/phone"
+        android:ems="10"
+        android:inputType="textPassword"/>
+    
+    <EditText
+        android:id="@+id/passwordconfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/password"
+        android:layout_below="@+id/password"
+        android:ems="10"
+        android:inputType="textPassword"/>
+    
+    <EditText
+        android:id="@+id/paypalemail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/passwordconfirm"
+        android:layout_below="@+id/passwordconfirm"
+        android:ems="10"
+        android:inputType="textWebEmailAddress"/>
+    
+    <EditText
+        android:id="@+id/paypalpassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/paypalemail"
+        android:layout_below="@+id/paypalemail"
+        android:ems="10"
+        android:inputType="textPassword"/>"
+    
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/paypalpassword"
+        android:layout_below="@+id/paypalpassword"
+        android:text="Send" />
+
+    <Button
+        android:id="@+id/newitem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/submit"
+        android:layout_alignBottom="@+id/submit"
+        android:layout_alignRight="@+id/paypalpassword"
+        android:onClick="newItem"
+        android:text="newItem" />
+    
+    <Button
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/newitem"
+        android:layout_below="@+id/newitem"
+        android:onClick="login"
+        android:text="login" />
+
 </RelativeLayout>
