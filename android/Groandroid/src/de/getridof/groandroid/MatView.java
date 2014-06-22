@@ -80,6 +80,8 @@ public class MatView extends SurfaceView {
 		if(moveup){
 			if((sessy > (float) ((getHeight()/2)-(bmp.getHeight()*0.6))) && stop){
 				sessy_add-=10;
+				sessx_add+=5;
+				bikex_add+=5;
 			}else{
 				stop = false;
 			}
