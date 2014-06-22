@@ -1,0 +1,1 @@
+web:    java -cp gro_rest/target/classes:gro_rest/target/lib/* -Djava.net.preferIPv4Stack=true org.battlehack.gro.Main --port 8080
